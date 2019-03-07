@@ -1,0 +1,31 @@
+Tours de Hanoi
+
+Algorythme pour <n> disques (récursif)
+
+- Dans tous les cas, un total de <2n-1> mouvements maximum.
+
+
+Déplacer n disques de A vers C en passant par B :
+
+Déplacer (n-1) disques de A vers B en passant par C;
+
+Déplacer 1 disque de A vers C ;
+
+Déplacer (n-1) disques de B vers C en passant par A.
+
+
+
+    n : nombre de disques utilisés,
+    D : emplacement de départ,
+    A : emplacement d'arrivée,
+    I : emplacement intermédiaire.
+
+
+
+fonction Hanoi(n, D, A, I)
+    si n != 0
+        Hanoi(n-1, D, I, A)
+        Déplacer le disque de D vers A
+        Hanoi(n-1, I, A, D)
+    fin-si
+fin-fonction
