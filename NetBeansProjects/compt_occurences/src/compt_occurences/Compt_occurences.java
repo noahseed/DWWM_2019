@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package compt_lettre;
+package compt_occurences;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author CRM
  */
-public class Compt_lettre {
+public class Compt_occurences {
 
     /**
      * @param args the command line arguments
@@ -29,24 +29,28 @@ public class Compt_lettre {
                 + " ullamcorper Coopé de Truchtersheim amet kuglopf ac Carola "
                 + "Racing.";
         
+        phrase = phrase.toLowerCase();
+        
         Scanner sc = new Scanner(System.in);
-        System.out.println("Quelle lettre souhaitez-vous rechercher dans la "
-                + "phrase ?");
-        char lettre = sc.next().charAt(0);
+        System.out.println("Quelle suite de lettres souhaitez-vous rechercher "
+                + "dans la phrase ?");
+        String saisie = sc.nextLine();
         
         for (int i = 0; i < phrase.length(); i++) {
-            if (phrase.charAt(i) == lettre) {
-                cpt++;
+            if (phrase.charAt(i) == saisie.charAt(0)) {
+                if (phrase.charAt(i+1) == saisie.charAt(1)) {
+                    cpt++;
+                }
             }
         }
         
         if (cpt == 0) {
-            System.out.println("La phrase ne contient pas le caractère "
-                    + "recherché.");
+            System.out.println("L'occurence n'a pas été trouvée.");
         }
         else {
-            System.out.println("Le caractère \"" + lettre + "\" apparait "
-                    + cpt + " fois dans la phrase.");
+            System.out.println("L'occurence a été trouvée " + cpt + " fois "
+                    + "dans la phrase.");
         }
     }
+    
 }
