@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"com.sebastien.application"},{"l":"com.sebastien.entites"}]
