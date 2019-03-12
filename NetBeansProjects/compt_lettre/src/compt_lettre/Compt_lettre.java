@@ -3,19 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package nombrejeunes;
+package compt_lettre;
 
 /**
  *
  * @author CRM
  */
-public class NombreJeunes {
+public class Compt_lettre {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        int cpt = 0;
+        
+        System.out.println("Quelle lettre souhaitez-vous rechercher dans la phrase ?");
     }
     
 }
