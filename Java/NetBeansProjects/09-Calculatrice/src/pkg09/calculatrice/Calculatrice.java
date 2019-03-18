@@ -17,6 +17,7 @@ public class Calculatrice {
      * @param operateur Opérateur de calcul
      * @param var1
      * @param var2
+     * @return resultat
      */
     public static String calculer(char operateur, float var1, float var2) {
         String resultat;
