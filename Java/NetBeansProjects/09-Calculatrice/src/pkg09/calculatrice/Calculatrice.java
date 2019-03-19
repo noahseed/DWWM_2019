@@ -5,7 +5,7 @@
  */
 package pkg09.calculatrice;
 
-import java.util.Scanner;
+import static javax.swing.JOptionPane.*;
 
 /**
  *
@@ -13,66 +13,51 @@ import java.util.Scanner;
  */
 public class Calculatrice {
     public static float result;
+    public static String resultat;
     /**
      * @param operateur Opérateur de calcul
      * @param var1
      * @param var2
      * @return resultat
+     * @throws pkg09.calculatrice.CalculException
      */
-    public static String calculer(char operateur, float var1, float var2) {
-        String resultat;
+    public static String calculer(char operateur, int var1, int var2) 
+            throws CalculException {
         switch(operateur) {
             case '-':
                 result = var1 - var2;
-                resultat = String.format("%2.2f - %2.2f = %2.2f", var1, var2, result);
+                resultat = String.format("%2.2f - %2.2f = %2.2f", var1, var2, 
+                        result);
                 break;
             case '+':
                 result = var1 + var2;
-                resultat = String.format("%2.2f + %2.2f = %2.2f", var1, var2, result);
+                resultat = String.format("%d + %d = %2.2f", var1, var2, 
+                        result);
                 break;
             case '*':
                 result = var1 * var2;
-                resultat = String.format("%2.2f * %2.2f = %2.2f", var1, var2, result);
+                resultat = String.format("%2.2f * %2.2f = %2.2f", var1, var2, 
+                        result);
                 break;
             case '/':
+                
                 try {
-                    result = var1 / var2;
-                    resultat = String.format("%2.2f / %2.2f = %2.2f", var1, var2, result);
-                } catch(Exception e) {
+                    if(var2 == 0)
+                    {
+                        throw new CalculException("Diviser par zéro est un non sens !");
+                    }
+                    
+                    result = ((float)var1 / (float)var2);
+                    resultat = String.format("%d / %d = %2.2f", var1, 
+                            var2, result);
+                } catch(CalculException e) {
                     e.printStackTrace();
                 }
-                
                 break;
             default:
-                resultat = ("Quel est cet opérateur étrange venu d'ailleurs ? ----> " + operateur);
+                resultat = ("Quel est cet opérateur étrange venu d'ailleurs ? "
+                        + "----> " + operateur);
         }
         return resultat;
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-//        Scanner sc = new Scanner(System.in);
-//
-//        System.out.println("Quel est le premier nombre à calculer ?");
-//        double nb1 = sc.nextDouble();
-//        
-//        sc.nextLine();
-//        
-//        System.out.println("Quel est l'opérateur de calcul ?");
-//        String operat = sc.nextLine();
-//        char oper = operat.charAt(0);
-//        
-//        System.out.println("Quel est le deuxième nombre à calculer ?");
-//        double nb2 = sc.nextDouble();
-        System.out.println(Calculatrice.calculer('+', 1, 2));
-        System.out.println(Calculatrice.calculer('-', 2078, 64));
-        System.out.println(Calculatrice.calculer('*', 15, 3));
-        System.out.println(Calculatrice.calculer('/', 42, 9));
-//        Calculatrice.calculer('/', 15, 2) + Calculatrice.calculer('*', 2, 3);
-        
-//        System.out.println("Résultat : " + calculer(oper, nb1, nb2));
-    }
-    
 }
