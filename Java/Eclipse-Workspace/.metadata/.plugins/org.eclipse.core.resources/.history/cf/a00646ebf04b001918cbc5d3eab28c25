@@ -70,7 +70,6 @@ public class WebMail extends JFrame {
 		JMenuItem mnuQuit = new JMenuItem("Quitter");
 		mnuQuit.setMnemonic('Q');
 		mnuQuit.setIcon(new ImageIcon("icons/exit.png"));
-		mnuQuit.addActionListener(this::mnuQuitListener);
 		mnuMessage.add(mnuQuit);
 		
 		menuBar.add(mnuMessage);
@@ -128,8 +127,7 @@ public class WebMail extends JFrame {
 	}
 	
 	private void mnuAboutListener(ActionEvent event) {
-		JOptionPane.showMessageDialog(this, "Envoi de mails à un destinataire\n\n"
-				+ "© Sébastien RONDEAU CAMEIRA 2019\n\nVersion 1.0");
+		JOptionPane.showMessageDialog(this, "Envoi de mails à un destinataire\n\n© Sébastien RONDEAU CAMEIRA 2019\n\nVersion 1.0");
 	}
 
 	public static void main(String[] args) throws Exception {
