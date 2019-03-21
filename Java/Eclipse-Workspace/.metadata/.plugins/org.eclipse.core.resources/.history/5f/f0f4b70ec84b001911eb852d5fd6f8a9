@@ -1,0 +1,27 @@
+package fr.rondeaucameira.swing.webmail;
+
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+
+import fr.rondeaucameira.swing.exercice2.MyWindowListener4;
+
+public class WebMail extends JFrame {
+
+	private static final long serialVersionUID = 390126406282374161L;
+	
+	public WebMail() {
+		super("Envoi de mails à un destinataire");
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		this.setSize(600, 400);
+		this.setLocationRelativeTo(null);
+	}
+
+	public static void main(String[] args) throws Exception {
+		UIManager.setLookAndFeel(new NimbusLookAndFeel());
+
+		WebMail webMail = new WebMail();
+		webMail.setVisible(true);
+	}
+
+}

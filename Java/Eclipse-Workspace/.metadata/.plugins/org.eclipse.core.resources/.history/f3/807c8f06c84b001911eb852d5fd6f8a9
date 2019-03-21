@@ -1,0 +1,14 @@
+package fr.rondeaucameira.swing.webmail;
+
+import javax.swing.JFrame;
+import javax.swing.UIManager;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+
+public class WebMail extends JFrame {
+
+	public static void main(String[] args) throws Exception {
+		UIManager.setLookAndFeel(new NimbusLookAndFeel());
+
+	}
+
+}
