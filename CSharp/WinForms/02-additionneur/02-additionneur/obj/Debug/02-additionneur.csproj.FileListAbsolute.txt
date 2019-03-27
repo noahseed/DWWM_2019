@@ -1,0 +1,10 @@
+C:\Users\CRM\Documents\GitHub\DWWM_2019\CSharp\WinForms\02-additionneur\02-additionneur\bin\Debug\02-additionneur.exe.config
+C:\Users\CRM\Documents\GitHub\DWWM_2019\CSharp\WinForms\02-additionneur\02-additionneur\bin\Debug\02-additionneur.exe
+C:\Users\CRM\Documents\GitHub\DWWM_2019\CSharp\WinForms\02-additionneur\02-additionneur\bin\Debug\02-additionneur.pdb
+C:\Users\CRM\Documents\GitHub\DWWM_2019\CSharp\WinForms\02-additionneur\02-additionneur\obj\Debug\02-additionneur.csprojAssemblyReference.cache
+C:\Users\CRM\Documents\GitHub\DWWM_2019\CSharp\WinForms\02-additionneur\02-additionneur\obj\Debug\_02_additionneur.Form1.resources
+C:\Users\CRM\Documents\GitHub\DWWM_2019\CSharp\WinForms\02-additionneur\02-additionneur\obj\Debug\_02_additionneur.Properties.Resources.resources
+C:\Users\CRM\Documents\GitHub\DWWM_2019\CSharp\WinForms\02-additionneur\02-additionneur\obj\Debug\02-additionneur.csproj.GenerateResource.cache
+C:\Users\CRM\Documents\GitHub\DWWM_2019\CSharp\WinForms\02-additionneur\02-additionneur\obj\Debug\02-additionneur.csproj.CoreCompileInputs.cache
+C:\Users\CRM\Documents\GitHub\DWWM_2019\CSharp\WinForms\02-additionneur\02-additionneur\obj\Debug\02-additionneur.exe
+C:\Users\CRM\Documents\GitHub\DWWM_2019\CSharp\WinForms\02-additionneur\02-additionneur\obj\Debug\02-additionneur.pdb

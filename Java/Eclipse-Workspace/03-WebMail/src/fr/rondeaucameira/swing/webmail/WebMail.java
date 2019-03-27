@@ -183,7 +183,7 @@ public class WebMail extends JFrame {
             //Read to skip the header
             br.readLine();
             //Reading from the second line
-            while ((line = br.readLine()) != null) 
+            while ((line = br.readLine()) != null)
             {
                 String[] recipientDetails = line.split(COMMA_DELIMITER);
                 
