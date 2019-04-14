@@ -1,19 +1,31 @@
 package fr.rondeaucameira.swing.webmail;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JToolBar;
-import javax.swing.JTree;
 import javax.swing.KeyStroke;
 import javax.swing.UIManager;
 import javax.swing.plaf.nimbus.NimbusLookAndFeel;
@@ -22,12 +34,17 @@ public class WebMail extends JFrame {
 
 	private static final long serialVersionUID = 390126406282374161L;
 	
+	// Delimiters used in the CSV file
+	private static final String COMMA_DELIMITER = ";";
+	
 	// Construction de l'interface graphique
-	public WebMail() {
+	public WebMail() throws IOException {
 		super("Envoi de mails à un destinataire");
 		this.setSize(600, 400);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		this.setIconImage(ImageIO.read(new File("icons/email.png")));
+		//this.pack();
 		
 		// Construction et injection de la barre de menu
 		this.setJMenuBar(createMenuBar());
@@ -35,7 +52,11 @@ public class WebMail extends JFrame {
 		// Construction et injection de la barre d'outils
 		JPanel contentPane = (JPanel) this.getContentPane();
 		contentPane.add(createToolBar(), BorderLayout.NORTH);
-		contentPane.add(new JTree(), BorderLayout.WEST);
+		
+		// Construction et injection de la zone centrale
+		JScrollPane txtEditMe = new JScrollPane(new JTextArea());
+		contentPane.add(txtEditMe);
+
 	}
 
 	// Méthode de construction de la barre de menu
@@ -105,6 +126,8 @@ public class WebMail extends JFrame {
 		// La barre d'outils à proprement parler
 		JToolBar toolBar = new JToolBar();
 		
+		toolBar.setPreferredSize(new Dimension(100, 30));
+		
 		JButton btnNew = new JButton(new ImageIcon("icons/new.png"));
 		btnNew.addActionListener(this::mnuAboutListener);
 		btnNew.setToolTipText("Nouveau");
@@ -120,6 +143,20 @@ public class WebMail extends JFrame {
 		btnSend.setToolTipText("Envoyer (F12)");
 		toolBar.add(btnSend);
 		
+		JLabel lblSubject = new JLabel("Sujet");
+		toolBar.add(lblSubject);
+		
+		JTextField txtSubject = new JTextField("Lycos WebCenter");
+		txtSubject.setPreferredSize(new Dimension(200, 30));
+		toolBar.add(txtSubject);
+		
+		JLabel lblRecipient = new JLabel("Pour");
+		toolBar.add(lblRecipient);
+		
+		JComboBox cboRecipient = new JComboBox();
+		cboRecipient.setPreferredSize(new Dimension(200, 30));
+		toolBar.add(cboRecipient);
+		
 		return toolBar;
 	}
 	
@@ -132,6 +169,52 @@ public class WebMail extends JFrame {
 				+ "© S. RONDEAU CAMEIRA 2019\n\nVersion 1.0");
 	}
 
+	public void mailBoxes(String name, String email) {
+		BufferedReader br = null;
+		
+		try {
+			//Reading the csv file
+            br = new BufferedReader(new FileReader("mails.csv"));
+            
+            //Create List for Recipient objects
+            ArrayList<Recipient> recipeList = new ArrayList<Recipient>();
+            
+            String line = "";
+            //Read to skip the header
+            br.readLine();
+            //Reading from the second line
+            while ((line = br.readLine()) != null)
+            {
+                String[] recipientDetails = line.split(COMMA_DELIMITER);
+                
+                if(recipientDetails.length > 0 )
+                {
+                    //Save the employee details in Employee object
+                    Recipient recipe = new Recipient(recipientDetails[0],recipientDetails[1]);
+                    recipeList.add(recipe);
+                }
+            }
+            
+            //Lets print the Recipe List
+            for(Recipient r : recipeList)
+            {
+                System.out.println(r.getName() + "  " + r.getEmail());
+            }
+		} catch (Exception ee) {
+			ee.printStackTrace();
+		} finally {
+			try
+            {
+                br.close();
+            }
+            catch(IOException ie)
+            {
+                System.out.println("Error occured while closing the BufferedReader");
+                ie.printStackTrace();
+            }
+		}
+	}
+	
 	public static void main(String[] args) throws Exception {
 		UIManager.setLookAndFeel(new NimbusLookAndFeel());
 

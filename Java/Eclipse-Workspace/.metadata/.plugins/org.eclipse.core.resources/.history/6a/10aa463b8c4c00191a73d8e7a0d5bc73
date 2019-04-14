@@ -1,0 +1,5 @@
+package fr.rondeaucameira.swing.webmail;
+
+public class Recipient {
+
+}
