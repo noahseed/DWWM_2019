@@ -129,7 +129,7 @@ public class WebMail extends JFrame {
 	
 	private void mnuAboutListener(ActionEvent event) {
 		JOptionPane.showMessageDialog(this, "Envoi de mails à un destinataire\n\n"
-				+ "© S. RONDEAU CAMEIRA 2019\n\nVersion 1.0");
+				+ "© Sébastien RONDEAU CAMEIRA 2019\n\nVersion 1.0");
 	}
 
 	public static void main(String[] args) throws Exception {
